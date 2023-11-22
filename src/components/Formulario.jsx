@@ -13,13 +13,13 @@ const Formulario = ({ error, setError }) => {
     e.preventDefault();
     console.log({ nombre, email, password, confirmarPassword });
 
-    const boolNombre = /^[A-Za-z]+ [A-Za-z]+$/.test(nombre);
+    const boolNombre = /^[A-Za-z]+(?: [A-Za-z]+)?$/.test(nombre);
     const boolEmail =
       /^([a-zA-Z0-9_\-]+)(\.[a-zA-Z0-9_\-]+)*@(([a-zA-Z0-9\-]+)\.)+([a-zA-Z]{2,})$/.test(
         email
       );
     const boolPass =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&_\-])[A-Za-z\d@$!%*#?&_\-]{8,}$/.test(
         password
       );
     const boolRepeatPass = password === confirmarPassword;
