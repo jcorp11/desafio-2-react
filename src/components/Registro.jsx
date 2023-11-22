@@ -7,9 +7,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import Formulario from "./Formulario";
 
-const Registro = () => {
-  const [error, setError] = useState(false);
-
+const Registro = ({ error, setError }) => {
   return (
     <div className="registro-container" style={style.registro}>
       <h1 style={style.h1}>Crea una cuenta</h1>

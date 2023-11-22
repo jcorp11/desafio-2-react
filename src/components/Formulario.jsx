@@ -19,17 +19,17 @@ const Formulario = ({ error, setError }) => {
         email
       );
     const boolPass =
-      /^^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(
         password
       );
     const boolRepeatPass = password === confirmarPassword;
 
     console.log({ boolNombre, boolEmail, boolPass, boolRepeatPass });
     if (!boolNombre || !boolEmail || !boolPass || !boolRepeatPass) {
-      setError(true);
+      setError(2);
       return;
     }
-    setError(false);
+    setError(1);
   };
 
   return (

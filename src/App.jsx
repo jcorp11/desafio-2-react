@@ -6,9 +6,10 @@ import Registro from "./components/Registro";
 import "./App.css";
 
 function App() {
+  const [error, setError] = useState(0);
   return (
     <>
-      <Registro />
+      <Registro {...{ error, setError }} />
     </>
   );
 }
