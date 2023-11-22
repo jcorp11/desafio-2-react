@@ -1,3 +1,4 @@
+import { useState } from "react";
 import SocialButton from "./SocialButton";
 import {
   faFacebook,
@@ -7,11 +8,13 @@ import {
 import Formulario from "./Formulario";
 
 const Registro = () => {
+  const [error, setError] = useState(false);
+
   return (
     <div className="registro-container" style={style.registro}>
       <h1 style={style.h1}>Crea una cuenta</h1>
       <SocialButton {...{ faFacebook, faGithub, faLinkedinIn }} />
-      <Formulario />
+      <Formulario {...{ error, setError }} />
     </div>
   );
 };
