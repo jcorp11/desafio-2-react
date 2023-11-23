@@ -7,14 +7,16 @@ const Alerta = ({ error }) => {
     boolNombre: "El nombre es obligatorio",
     boolEmail: "El email debe ser válido",
     boolPass: (
-      <>
-        La contraseña debe tener al menos:
-        <br />1 Letra
-        <br />1 Número
-        <br />1 Caracter especial
-        <br />
-        Al menos 8 caracteres
-      </>
+      <div style={{ margin: "0 auto" }}>
+        <p style={{ textAlign: "left" }}>
+          La contraseña debe tener al menos:
+          <br />1 Letra
+          <br />1 Número
+          <br />1 Caracter especial
+          <br />
+          Al menos 8 caracteres
+        </p>
+      </div>
     ),
     boolRepeatPass: "Las contraseñas no coinciden",
   };
