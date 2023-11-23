@@ -7,11 +7,14 @@ import {
 import Formulario from "./Formulario";
 import Alerta from "./Alerta";
 
+const icons = [faFacebook, faGithub, faLinkedinIn];
+
 const Registro = ({ error, setError }) => {
   return (
     <div className="registro-container" style={style.registro}>
       <h1 style={style.h1}>Crea una cuenta</h1>
-      <SocialButton {...{ faFacebook, faGithub, faLinkedinIn }} />
+      {/* <SocialButton {...{ faFacebook, faGithub, faLinkedinIn }} /> */}
+      <SocialButton icons={icons} />
       <Formulario {...{ error, setError }} />
       <Alerta {...{ error }} />
     </div>
