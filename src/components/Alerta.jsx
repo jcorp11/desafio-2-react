@@ -2,25 +2,31 @@ import "./css/alerta.css";
 
 const Alerta = ({ error }) => {
   let paraAlerta = "";
-  if (!error.mistake) {
-    paraAlerta = <p>Registro exitoso</p>;
-  } else if (!error.conditions.boolNombre) {
-    paraAlerta = <p>El nombre es obligatorio</p>;
-  } else if (!error.conditions.boolEmail) {
-    paraAlerta = <p>El email debe ser válido</p>;
-  } else if (!error.conditions.boolPass) {
-    paraAlerta = (
-      <p>
-        La contrasena debe tener al menos:
-        <br />1 letra
-        <br />1 numero
-        <br />1 caracter especial
+
+  const errorMessages = {
+    boolNombre: "El nombre es obligatorio",
+    boolEmail: "El email debe ser válido",
+    boolPass: (
+      <>
+        La contraseña debe tener al menos:
+        <br />1 Letra
+        <br />1 Número
+        <br />1 Caracter especial
         <br />
-        al menos 8 caracteres
-      </p>
-    );
-  } else if (!error.conditions.boolRepeatPass) {
-    paraAlerta = <p>Las contrasenas no coinciden</p>;
+        Al menos 8 caracteres
+      </>
+    ),
+    boolRepeatPass: "Las contraseñas no coinciden",
+  };
+
+  // caso default exitoso
+  paraAlerta = <p>Registro exitoso</p>;
+
+  for (const condition in error.conditions) {
+    if (!error.conditions[condition]) {
+      paraAlerta = <p>{errorMessages[condition]}</p>;
+      break;
+    }
   }
 
   return (
