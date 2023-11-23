@@ -1,7 +1,4 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faFacebook } from "@fortawesome/free-brands-svg-icons";
-// import { faGithub } from "@fortawesome/free-brands-svg-icons";
-// import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
 const SocialButton = ({ faFacebook, faGithub, faLinkedinIn }) => {
   return (

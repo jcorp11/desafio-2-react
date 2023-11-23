@@ -1,40 +1,31 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import "./css/formulario.css";
+import { validarInput } from "../utils/validate";
 
 const Formulario = ({ error, setError }) => {
-  const [nombre, setNombre] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmarPassword, setConfirmarPassword] = useState("");
+  const [formState, setFormState] = useState({
+    nombre: "",
+    email: "",
+    password: "",
+    confirmarPassword: "",
+  });
+
+  const changeInput = (e) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   useEffect(() => console.log({ error }), [error]);
 
-  const validarInput = async (e) => {
-    e.preventDefault();
-    console.log({ nombre, email, password, confirmarPassword });
-
-    const boolNombre = /^[A-Za-z]+(?: [A-Za-z]+)?$/.test(nombre);
-    const boolEmail =
-      /^([a-zA-Z0-9_\-]+)(\.[a-zA-Z0-9_\-]+)*@(([a-zA-Z0-9\-]+)\.)+([a-zA-Z]{2,})$/.test(
-        email
-      );
-    const boolPass =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&_\-])[A-Za-z\d@$!%*#?&_\-]{8,}$/.test(
-        password
-      );
-    const boolRepeatPass = password === confirmarPassword;
-
-    console.log({ boolNombre, boolEmail, boolPass, boolRepeatPass });
-    if (!boolNombre || !boolEmail || !boolPass || !boolRepeatPass) {
-      setError(2);
-      return;
-    }
-    setError(1);
-  };
-
   return (
     <section className="formContainer">
-      <form className="formulario" onSubmit={validarInput}>
+      <form
+        className="formulario"
+        onSubmit={(e) => validarInput(e, formState, setError)}
+      >
         <section className="form-group mt-3">
           <input
             type="text"
@@ -42,8 +33,8 @@ const Formulario = ({ error, setError }) => {
             id="nombre"
             className="form-control"
             placeholder="Tu Nombre"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
+            value={formState.nombre}
+            onChange={changeInput}
           />
         </section>
         <section className="form-group mt-2">
@@ -53,30 +44,30 @@ const Formulario = ({ error, setError }) => {
             id="email"
             className="form-control"
             placeholder="tuemail@ejemplo.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formState.email}
+            onChange={changeInput}
           />
         </section>
         <section className="form-group mt-2">
           <input
             type="password"
-            name="contrasena"
+            name="password"
             id="password"
             className="form-control"
             placeholder="Contraseña"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formState.password}
+            onChange={changeInput}
           />
         </section>
         <section className="form-group mt-2">
           <input
             type="password"
-            name="repeatpass"
+            name="confirmarPassword"
             id="repeatpass"
             className="form-control"
             placeholder="Repite la contraseña"
-            value={confirmarPassword}
-            onChange={(e) => setConfirmarPassword(e.target.value)}
+            value={formState.confirmarPassword}
+            onChange={changeInput}
           />
         </section>
         <button
