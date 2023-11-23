@@ -1,4 +1,5 @@
 {
+  "homepage": "https://jcorp11.github.io/desafio-2-react/",
   "name": "desafio-2-react",
   "private": true,
   "version": "0.0.0",
@@ -9,7 +10,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
@@ -34,6 +35,5 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "gh-pages": "^6.1.0",
     "vite": "^4.4.5"
-  },
-  "homepage": "https://jcorp11.github.io/desafio-2-react/"
+  }
 }
